@@ -2,20 +2,21 @@
 Documentation    To validate the login form
 Library    SeleniumLibrary
 Test Teardown  Close Browser
+Test Template    Validate Unsuccesful Login
 
 *** Variables ***
 ${Error_Message_Login}      css:.alert-danger
 
-*** Test Cases ***      username       password
-Invalid username        dashed         learning
-Invalid password        rahulshetty    ploudfg
-special characters      @#$            learning
+*** Test Cases ***          username           password
+Invalid username            dashed              learning
+Invalid password            rahulshetty         ploudfg
+special characters          @#$                 learning
 
 *** Keywords ***
 Validate Unsuccesful Login
-    [Arguments]     ${username}     ${password}
+    [Arguments]      ${username}        ${password}
     open the browser with Mortage payment url
-    Fill the login form     ${username}     ${password}
+    Fill the login form      ${username}        ${password}
     wait until it checks and display error message
     verify error message is correct
 
@@ -24,8 +25,9 @@ open the browser with Mortage payment url
     Go To    https://rahulshettyacademy.com/loginpagePractise/
 
 Fill the login form
-    Input Text    id:username   piyushverma.com
-    Input Text    id:password   123344
+    [Arguments]      ${username}   ${password}
+    Input Text       id:username   ${username}
+    Input Text       id:password   ${password}
     Click Button    signInBtn
 
 wait until it checks and display error message
