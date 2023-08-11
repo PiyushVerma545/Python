@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.4 on win32)" generated="20230808 17:26:41.914" rpa="false" schemaversion="4">
+<suite id="s1" name="robotFramework" source="C:\Users\Swapnil\Desktop\robotFramework">
+<suite id="s1-s1" name="parameterizeRobotFrame" source="C:\Users\Swapnil\Desktop\robotFramework\parameterizeRobotFrame">
+<suite id="s1-s1-s1" name="Demotest4" source="C:\Users\Swapnil\Desktop\robotFramework\parameterizeRobotFrame\demotest4.robot">
+<test id="s1-s1-s1-t1" name="Invalid username" line="10">
+<kw name="dashed">
+<arg>learning</arg>
+<msg timestamp="20230808 17:26:42.068" level="FAIL">No keyword with name 'dashed' found.</msg>
+<status status="FAIL" starttime="20230808 17:26:42.068" endtime="20230808 17:26:42.068"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230808 17:26:42.068" endtime="20230808 17:26:42.068"/>
+</kw>
+<status status="FAIL" starttime="20230808 17:26:42.068" endtime="20230808 17:26:42.068">No keyword with name 'dashed' found.</status>
+</test>
+<doc>To validate the login form</doc>
+<status status="FAIL" starttime="20230808 17:26:41.930" endtime="20230808 17:26:42.068"/>
+</suite>
+<status status="FAIL" starttime="20230808 17:26:41.930" endtime="20230808 17:26:42.084"/>
+</suite>
+<status status="FAIL" starttime="20230808 17:26:41.914" endtime="20230808 17:26:42.084"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="robotFramework">robotFramework</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="parameterizeRobotFrame">robotFramework.parameterizeRobotFrame</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1-s1" name="Demotest4">robotFramework.parameterizeRobotFrame.Demotest4</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
