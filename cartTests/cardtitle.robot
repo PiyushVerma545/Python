@@ -2,25 +2,27 @@
 Documentation    To validate the login form
 Library    SeleniumLibrary
 Library     Collections
+Library     String
 Test Setup    open the browser with Mortage payment url
-#Test Teardown  Close Browser Session
+Test Teardown  Close Browser Session
 Resource    resource.robot
 
 *** Variables ***
 ${Error_Message_Login}      css:.alert-danger
 ${Shop_page_load}           css:.nav-link
 
+
 *** Test Cases ***
 #Validate Unsuccesful Login
-    #Fill the login form     ${user_name}  ${invalid_password}
-    #wait until Element is located in the page   ${Error_Message_login}
-    #verify error message is correct
+    Fill the login form     ${user_name}  ${invalid_password}
+    wait until Element is located in the page   ${Error_Message_login}
+    verify error message is correct
 
 #Validate Cards display in the Shopping Page
-    #Fill the login form     ${user_name}    ${valid_password}
-    #wait until Element is located in the page   ${Shop_page_load}
-    #verify Card titles in the shop page
-    #Select the Card     Blackberry
+    Fill the login form     ${user_name}    ${valid_password}
+    wait until Element is located in the page   ${Shop_page_load}
+    verify Card titles in the shop page
+    Select the Card     Blackberry
 
 
 Select the Form and navigate to Child window
@@ -52,22 +54,23 @@ verify Card titles in the shop page
     FOR    ${element}   IN  ${elements}
        # Log     ${element.text}
         Append To List     ${actualList}    ${element.text}
+
     END
     Lists Should Be Equal   ${expectedList}   ${actualList}
 
     # once created list with @ , then only use $
 
 
-'''Select the Card
+Select the Card
 #argument taught in tutorial correct is Argument
     [Arguments]     ${cardName}
     ${elements}=   Get WebElements     css:.card-title
     ${index}=     Set Variable    1
     FOR    ${element}   IN  ${elements}
-       Exit For Loop If    '${cardName}' == '${element.text}'
+       Exit For Loop If    '${cardName}' == '${elements.text}'
        ${index}=    Evaluate    ${index}+1
     END
-    Click Button    xpath:(//*[@class='card-footer'])[${index}]/button'''
+    Click Button    xpath:(//*[@class='card-footer'])[${index}]/button
 
 Fill the Login Details and Login Form
 
