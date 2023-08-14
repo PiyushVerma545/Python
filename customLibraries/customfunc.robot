@@ -1,8 +1,10 @@
+*** Test Cases ***
 *** Settings ***
 Documentation    To validate the login form
 Library    SeleniumLibrary
 Library     Collections
 Library     String
+Library     Shop.py
 Test Setup    open the browser with Mortage payment url
 Test Teardown  Close Browser Session
 Resource    resource.robot
@@ -10,19 +12,20 @@ Resource    resource.robot
 *** Variables ***
 ${Error_Message_Login}      css:.alert-danger
 ${Shop_page_load}           css:.nav-link
+@{listofProducts}       Blackberry      Nokia Edge
 
 
 *** Test Cases ***
-#Validate Unsuccesful Login
+Validate Unsuccesful Login
     Fill the login form     ${user_name}  ${invalid_password}
     wait until Element is located in the page   ${Error_Message_login}
     verify error message is correct
 
-#Validate Cards display in the Shopping Page
+Validate Cards display in the Shopping Page
     Fill the login form     ${user_name}    ${valid_password}
     wait until Element is located in the page   ${Shop_page_load}
-    verify Card titles in the shop page
-    Select the Card     Blackberry
+   # verify Card titles in the shop page
+  Add Items To Cart And Checkout         $(listofProducts)
 
 
 Select the Form and navigate to Child window
@@ -47,7 +50,7 @@ verify error message is correct
     Element Text Should Be    ${Error_Message_Login}  Incorrect username/password.
 
 verify Card titles in the shop page
-# first time create list with @
+#first time create list with @
     @{expectedList}=    Create List    iphone X   Samsung Note 8   Nokia Edge    Blackberry
     ${elements}=   Get WebElements     css:.card-title
     @{actualList}=      Create List
@@ -73,7 +76,6 @@ Select the Card
     Click Button    xpath:(//*[@class='card-footer'])[${index}]/button
 
 Fill the Login Details and Login Form
-
     Input Text    id:username     rahulshettyacademy
     Input Password   id:password     learning
     Click Element    css:input[value='user']
